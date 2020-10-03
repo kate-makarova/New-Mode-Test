@@ -1,5 +1,10 @@
 postal-form:
   version: 1.x
+
+  css:
+    theme:
+      css/representative-match-postal-form.css: {}
+
   js:
     js/representative-match-postal-form.js: {}
   dependencies:

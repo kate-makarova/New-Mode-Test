@@ -1,0 +1,50 @@
+.set-list, .contact-lst {
+  list-style: none;
+  padding: 0;
+  border: 1px #ccc solid; }
+  .set-list > li, .contact-lst > li {
+    border-top: 1px #ccc solid;
+    margin: 0;
+    padding: 3px 10px; }
+    .set-list > li > label, .contact-lst > li > label {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
+      text-align: center; }
+
+.contact-item {
+  display: flex; }
+  .contact-item .contact-item-main {
+    width: 60%; }
+    .contact-item .contact-item-main span.name {
+      display: block;
+      font-size: 1.2rem; }
+    .contact-item .contact-item-main span.office {
+      display: block;
+      font-weight: bold; }
+    .contact-item .contact-item-main span.email {
+      display: block;
+      margin-top: 1rem;
+      color: navy; }
+    .contact-item .contact-item-main span.email:before {
+      content: "Email: "; }
+  .contact-item .contact-item-offices {
+    width: 40%; }
+    .contact-item .contact-item-offices ul {
+      list-style: none;
+      font-size: 0.8rem;
+      background: #f5f2f2;
+      margin-bottom: 0.5rem;
+      border-radius: 5px; }
+      .contact-item .contact-item-offices ul label.office-item {
+        display: inline-block;
+        margin-right: 10px; }
+      .contact-item .contact-item-offices ul label.office-item:after {
+        content: ":"; }
+
+#input-container {
+  box-shadow: 0 0 3px #bdbdbd;
+  padding: 15px;
+  margin-top: 15px; }
+
+/*# sourceMappingURL=representative-match-postal-form.css.map */

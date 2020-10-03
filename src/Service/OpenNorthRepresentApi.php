@@ -275,8 +275,15 @@ class OpenNorthRepresentApi implements RepresentativeApiInterface {
           if (!(isset($candidate_list[$candidate->representative_set_name]))) {
             $candidate_list[$candidate->representative_set_name] = [];
           }
-          $candidate_list[$candidate->representative_set_name][] = $candidate->name;
+          $candidate_list[$candidate->representative_set_name][] = [
+            'name' => $candidate->name,
+            'email' => $candidate->email,
+            'office' => $candidate->elected_office,
+            'offices' => $candidate->offices
+            ];
         }
+
+        // This will work because candidates were originally grouped by set.
       }
       ksort($candidate_list);
 

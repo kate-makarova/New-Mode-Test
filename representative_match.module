@@ -5,7 +5,6 @@
  */
 function representative_match_theme($existing, $type, $theme, $path)
 {
-  $t = 1;
   return [
     'representative_match_postal_form' => [
       'render element' => 'form'

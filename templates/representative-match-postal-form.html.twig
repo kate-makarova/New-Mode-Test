@@ -1,2 +1,6 @@
-<h1>There is some text</h1>
-<h4>{{ form }}</h4>
+{{ form.contacts }}
+<div id="input-container">
+<h2>Find Your Representative</h2>
+<div>Enter your postal code in the field below to see the list of your political representatives.</div>
+{{ form|without('contacts') }}
+</div>
