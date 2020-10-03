@@ -4,4 +4,4 @@ This module creates an AJAX form for retrieving a list of political representati
   
 To access the form, navigate to {your-site-address}/representative.
 
-![Preview](https://pasteboard.co/JtWX2Wk.png)
+![Preview](https://img.techpowerup.org/201003/preview.png)
