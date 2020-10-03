@@ -81,10 +81,7 @@ class PostalForm extends FormBase {
   }
 
   /**
-   * This validator assumes that the site is designed to handle only Canadian postal codes.
-   *
-   * @param array $form
-   * @param FormStateInterface $form_state
+   * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     // Using standard validation with AJAX seams to be problematic, because there is
@@ -94,6 +91,8 @@ class PostalForm extends FormBase {
   /**
    * Validate the form and return the array of errors.
    * Since we only have one field in the form, there is no need to also return a field.
+   *
+   * This validator assumes that the site is designed to handle only Canadian postal codes.
    *
    * @param array $form
    * @param FormStateInterface $form_state

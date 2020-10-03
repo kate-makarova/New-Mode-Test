@@ -262,6 +262,9 @@ class OpenNorthRepresentApi implements RepresentativeApiInterface {
   }
 
 
+  /**
+   * {@inheritDoc}
+   */
   public function getCandidateList(string $postal_code): array
   {
     $cache = \Drupal::cache()->get($postal_code);
@@ -282,8 +285,6 @@ class OpenNorthRepresentApi implements RepresentativeApiInterface {
             'offices' => $candidate->offices
             ];
         }
-
-        // This will work because candidates were originally grouped by set.
       }
       ksort($candidate_list);
 
