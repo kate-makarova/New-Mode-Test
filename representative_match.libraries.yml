@@ -1,0 +1,6 @@
+postal-form:
+  version: 1.x
+  js:
+    js/representative-match-postal-form.js: {}
+  dependencies:
+    - core/jquery

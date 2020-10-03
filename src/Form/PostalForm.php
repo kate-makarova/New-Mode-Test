@@ -2,9 +2,13 @@
 
 namespace Drupal\representative_match\Form;
 
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\representative_match\Service\RepresentativeApiInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * This form provides the contacts of a local representative based on a postal code.
@@ -33,6 +37,15 @@ class PostalForm extends FormBase {
   /**
    * {@inheritdoc}
    */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('representative_match.open_north_represent_api')
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getFormId() {
     return 'representative_match_postal_form';
   }
@@ -47,7 +60,7 @@ class PostalForm extends FormBase {
     ];
 
     $form['postal_code'] = [
-      '#type' => 'text',
+      '#type' => 'textfield',
       '#title' => $this->t('Your postal code'),
     ];
 
@@ -58,6 +71,10 @@ class PostalForm extends FormBase {
         'callback' => '::retrieveContacts',
       ],
     ];
+
+    $form['#theme'] = 'representative_match_postal_form';
+    $form['#attached']['library'][] = "representative_match/postal-form";
+
     return $form;
   }
 
@@ -76,13 +93,23 @@ class PostalForm extends FormBase {
   }
 
   public function retrieveContacts(array $form, FormStateInterface $form_state) {
+    $candidates = $this->representative_api->getCandidateList($form_state->getValue('postal_code'));
+
     $response = new AjaxResponse();
     $response->addCommand(
-      new HtmlCommand(
-        '.result_message',
-        '<div class="my_top_message">' . t('The results is @result', ['@result' => ($form_state->getValue('number_1') + $form_state->getValue('number_2'))]) . '</div>'),
+      new InvokeCommand(
+        '#representative-match-postal-form-contacts',
+        'formTable',
+        [$candidates])
     );
     return $response;
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state)
+  {
+    // This method is never called, but it has to be implemented.
+  }
 }
