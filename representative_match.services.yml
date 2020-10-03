@@ -1,0 +1,4 @@
+services:
+  representative_match.open_north_represent_api:
+    class: \Drupal\representative_match\Service\OpenNorthRepresentApi
+    autowire: true'

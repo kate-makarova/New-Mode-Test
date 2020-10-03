@@ -1,0 +1,7 @@
+representative_match.postal:
+  path: '/hello'
+  defaults:
+    _controller: '\Drupal\representative_match\Controller\PostalController::postal'
+    _title: 'Find Your Representative'
+  requirements:
+    _permission: 'access content'
